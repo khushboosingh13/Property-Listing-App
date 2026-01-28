@@ -1,0 +1,23 @@
+
+<% layout("/layouts/boilerPlate") %>
+
+    <h2 style="margin-top: 1rem; letter-spacing: 2px; " class="fw-bold">🧭 Explore</h2>
+    <div class="row row-col-lg-3" style="margin-top: 1.2rem;">
+    <% for(let list of listData) { %>
+        <a href="/listing/<%=list._id%>" class="card-a">
+          <div class="card card-list" style="width: 16rem;">
+            <img src="<%=list.image.url%>" class="card-img-top" alt="...">
+            <!-- This div is used give a clikable effect -->
+            <div class="card-img-overlay"></div>  
+            <div class="card-body">        
+              <p class="card-text"><b><%= list.title %></b><br/>
+               💰₹<%= list.price.toLocaleString("en-IN")  %>/night                    
+            </p>
+            </div>
+          </div>
+        </a>  
+        <% } %>
+    </div>
+   
+
+

@@ -1,0 +1,131 @@
+<script>
+  
+  let lng = Number("<%= show.geometry.coordinates[0] %>")
+  let lat= Number("<%= show.geometry.coordinates[1] %>");
+  const address = "<%= show.location %>, <%= show.country %>";
+  
+    pricePerNight = Number("<%= show.price %>");
+ 
+
+</script>
+<%layout("/layouts/boilerPlate")%>
+ 
+<div class="row">
+  <div class="col-lg-8 offset-lg-3">
+    
+     <h2 style="margin-top: 1rem; letter-spacing: 2px; text-transform: uppercase; font-size: 1.5rem;" class="fw-bold">Listing Details</h2>
+  </div>
+
+  <div class="col-lg-6 offset-lg-3">
+    <img src="<%= show.image.url %>" class="card-img-top" alt="...">
+    <div class="card-body">
+      <div class="text-center text-muted mt-2" style="font-size: 0.9rem;">
+        <p style="text-transform: capitalize;">👤<strong>Owned By </strong><%= show.owner.username %></p>
+    </div>
+      
+      <p class="card-text "><h4 class="fw-bold"  style="text-transform: capitalize;">🏡<%= show.title %></h4>
+        <p><%= show.description %></p>
+       <p><strong>Location:</strong> 📍<%= show.location %>,<%= show.country %></p>
+       
+    </p>  
+    </div>
+  </div>
+  <% if(currUser && currUser._id.equals(show.owner._id)) { %>
+  <div class="col-1 offset-lg-3 mb-5">
+   
+    <a href="/listing/<%=show._id%>/edit" class="btn new-btn"  >Edit</a>
+  </div>
+  <div class="col-1 ">
+  <form action="/listing/<%=show._id%>/Delete?_method=DELETE" method="post">
+      <button class="btn new-btn" >DELETE</button>
+  </form>
+</div>
+  <% } %>
+<div class="col-lg-6 offset-lg-3 mb-3">
+    
+   <% if(!(currUser && currUser._id.equals(show.owner._id))) { %>
+  
+    <%- include("../section/reserveSection.ejs") %>
+     <br><br>  
+  <hr>
+ 
+   <h4>Leave Review</h4>
+   <form action="/listing/<%=show._id%>/reviews" method="post" novalidate class="needs-validation">
+    <!-- <div>
+      <label for="rating" class="form-label">Rating</label>
+      <input type="range" min="1" max="5" name="rating" id="rating" class="form-range">
+    </div> -->
+
+    <!-- ---- -->
+  <fieldset class="starability-grow">
+  <legend>Rating:</legend>
+  <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+  <input type="radio" id="first-rate1" name="rating" value="1" />
+  <label for="first-rate1" title="Terrible">1 star</label>
+  <input type="radio" id="first-rate2" name="rating" value="2" />
+  <label for="first-rate2" title="Not good">2 stars</label>
+  <input type="radio" id="first-rate3" name="rating" value="3" />
+  <label for="first-rate3" title="Average">3 stars</label>
+  <input type="radio" id="first-rate4" name="rating" value="4" />
+  <label for="first-rate4" title="Very good">4 stars</label>
+  <input type="radio" id="first-rate5" name="rating" value="5" />
+  <label for="first-rate5" title="Amazing">5 stars</label>
+</fieldset>
+    <!-- --- -->
+     <br>
+    <div>
+      <label for="comment" class="form-label">comment</label>
+      <textarea name="comment" id="comment" cols="30" rows="3" class="form-control" required></textarea>
+      <div class="invalid-feedback">
+        write comment
+     </div>
+    </div>
+    <br>
+      <button class="btn btn-outline-dark">Submit</button>
+   </form>
+   <% } %>
+   <hr>
+
+   <h4>All Review</h4>
+   <div class="row mt-4">
+      <% for(rev of show.review) { %> 
+    
+        <div class="card col-5 mb-3 ms-4" style="width: 15rem; background-color: rgba(140, 141, 138, 0.063);">
+          <div class="card-body">
+            <h5 class="card-title" style="font-size: medium; text-transform: capitalize;"><%= rev.Author.username %></h5>
+            <!-- --- -->
+                  
+                 <p class="starability-result card-text " data-rating="<%= rev.rating %>"></p>
+                 
+            <!-- --- -->
+            <p class="card-text" style="font-size: small;"><%= rev.comment %>.</p>
+           
+          <% if(currUser && currUser._id.equals(rev.Author._id)) { %>
+            <form action="/listing/<%=show._id%>/reviews/<%=rev._id%>?_method=DELETE" method="post"><button class="btn btn-danger">
+              Delete</button></form>
+          <% } %>
+          </div>
+        </div>        
+      <% } %>
+   </div>
+</div>
+
+
+<!-- MAP PART -->
+     
+   <div class="col-lg-6 offset-lg-3 mb-3">
+  <div id="result"><strong>See on Map</strong></div>
+  <div id="map" style="height: 250px; width: 100%;"></div>
+</div>
+
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="/js/map.js"></script>
+<script src="/js/reserveSection.js"></script>
+<!-- ---------------------map end------------------------ -->
+
+  </div>
+</div>
+  
+   
+   

@@ -1,0 +1,58 @@
+<% layout("/layouts/boilerPlate") %>
+<div class="container py-4">
+    
+    <% for(ReserveData of user.booking) { %>
+  <div class="card shadow-sm p-4">
+    
+
+    <!-- Property Info -->
+     
+    <h5 class="mb-1">🏡 <%=ReserveData.listingId.title %></h5>
+    <p class="text-muted mb-3">📍 <%=ReserveData.listingId.location%>,<%= ReserveData.listingId.country %></p>
+
+    <!-- Check-in/Check-out Dates -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <strong>Check-in:</strong><br>
+        <span>📅<%= ReserveData.checkin %></span>
+      </div>
+      <div class="col-md-6">
+        <strong>Check-out:</strong><br>
+        <span>📅 <%= ReserveData.checkout %></span>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="mb-3">
+      <strong>Property Address:</strong><br>
+       <%=ReserveData.listingId.location%>,<%= ReserveData.listingId.country %>
+    </div>
+
+    <!-- Payment Summary -->
+    <div class="mb-3">
+      <strong>Payment Summary:</strong>
+      <ul class="list-unstyled mb-0">
+        <li>💰 Price: ₹<%= ReserveData.price %></li>
+        <li>🌙 Nights: <%=ReserveData.nights %></li>
+        <li>🧾 Taxes (18%): <%= ReserveData.gst %></li>
+        <li class="fw-bold">Total Paid: ₹<%=ReserveData.totalPrice%></li>
+      </ul>
+    </div>
+
+    <!-- Guest Info -->
+    <div>
+      <strong>Guest Details:</strong><br>
+      👤 Name: <%=user.username%><br>
+      📞 Phone: <%=ReserveData.phone%><br>
+      📅 Booking Date: <%=ReserveData.date%><br>
+      📧 Email: <%user.email %>
+         
+    </div>
+
+  </div>
+
+
+<br><br>
+<% } %>
+</div>
+<br><br>

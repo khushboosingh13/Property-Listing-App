@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary nav-me" >
+    <div class="container-fluid" >
+        <a class="navbar-brand" href="#">
+            <img src="/image/diamond_3123032.png" alt="Logo" class="d-inline-block align-top logo" width="50">
+             
+        </a>
+      <a class="navbar-brand logo-text" href="/listing">Housing</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse list" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link item" aria-current="page" href="/listing" >Explore</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link item" href="/listing/mylisting"> My Listing</a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link item " aria-current="page" href="/listing/new">List your Property</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle item " id="user-item" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <b style="font-size: 19px;"> <i class="fa-solid fa-user"></i> user</b>
+            </a>
+            <ul class="dropdown-menu">
+              
+             
+
+              <% if(!currUser) { %>
+              <li><a class="dropdown-item" href="/user/signup">Sign up</a></li>
+              <li><a class="dropdown-item" href="/user/login">Log in</a></li>
+              <% } %> <% if(currUser) { %>
+                 <li><a class="dropdown-item" href="/user/profile"><i class="fa-solid fa-user"></i> Profile</a></li>
+                 <li><a class="dropdown-item" href="/user/mybooking"> My Booking</a></li>
+              <li><hr class="dropdown-divider"></li>
+               <li><a class="dropdown-item" href="/user/logout">Log out</a></li>
+              <% } %>
+              
+
+            </ul>
+          </li> 
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 110px;">
+          <button class="btn btn-outline-success search-btn" type="submit" style="width: 80px;">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
