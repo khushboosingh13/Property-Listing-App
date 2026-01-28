@@ -1,0 +1,193 @@
+body{
+    font-family: "Plus Jakarta Sans", serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* ** */
+.container{
+    flex: 1;
+}
+
+/* Navbar */
+
+.navbar{
+    background-color: white !important;
+}
+.logo{
+    padding-left: 35px;
+    margin-left: 30px;
+    width: 85px;
+}
+.logo-text{
+    font-weight: 700;
+    text-transform: uppercase;
+    /* letter-spacing: 2px; */
+    color: rgb(212, 16, 16);
+}
+
+ul{
+    margin-left: 40px;
+    
+}
+.list{
+    text-align: center;
+    align-items: center;
+    color: aqua;
+    margin-left: 100px;
+}
+
+.list ul li{
+     padding: 0px 20px;
+     font-size: 17px;
+}
+.nav-me{
+    background-color: rgb(255, 255, 255);
+    /* box-shadow: 1px -9px 16px black; */
+    border-bottom: 0.2px solid gray;
+}
+.search-btn{
+    background-color: rgb(212, 16, 16);
+    color: white;
+    border: none;
+   
+    cursor: pointer;
+}
+.search-btn:hover{
+    background-color: rgb(136, 14, 14);
+}
+.item:hover{
+    color: rgb(212, 16, 16);
+    font-weight: 600;
+}
+#user-item{
+    color: rgb(212, 16, 16);
+}
+
+/* new ---------------------- */
+.new-h2{
+    font-size: 25px;
+    letter-spacing: 1.2px;
+}
+
+.new-btn{
+    background-color:  rgb(212, 16, 16);
+    color: white;
+
+}
+ .new-btn:hover{
+    background-color:  rgb(105, 17, 17);
+    color: white;
+ }
+ /* ------------------------FOOTER ------------------------------------------------------*/
+.foot{
+    text-align: center;
+    background-color: rgb(231, 228, 228);
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap ;
+    padding: 20px 0px;
+    /* flex-direction: column; */
+}
+
+.social-m{
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+}
+
+
+
+
+
+.private{
+    width: 100%;
+}
+.copy{
+    width: 100%;
+}
+.social-m a{
+    color: rgb(212, 16, 16);
+    text-decoration: none;
+    padding: 0px 5px;
+    font-size: 30px;
+}
+.private a{
+    text-decoration: none;
+    color: black;
+    padding: 0px 5px;
+}
+/* lisitng______________________________________________________ */
+.card-list{
+   border: none !important; 
+   /* margin: 0 0.4rem; */
+   margin-bottom: 3rem;
+}
+.card-img-top{
+    border-radius:13px !important;
+    width: 100% !important;
+    height: 17rem !important;
+    object-fit: cover !important;
+}
+
+.card-text{
+    padding: 0px !important;
+    color: black !important;
+}
+
+.card-a{
+    width: auto !important;
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.1;
+    background-color: white;
+}
+
+/* sign up */
+
+.frm{
+        
+    margin-top: 3rem;
+    margin-bottom: 4rem;  
+    box-shadow: 0.2px 1px 30px 0.6px;
+    padding: 3rem;
+    border-radius: 20px;
+ }
+ .hd{
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-bottom: 1.5rem;
+    
+ }
+
+ #reserveImage{
+    width: 20rem;
+    height: 8rem;
+
+ }
+
+
+/* _______________________________________________________________________________________________ */
+
+@media (max-width: 500px){
+    .logo{
+        display: none !important;
+    }
+    .logo-text{
+        letter-spacing: 2px;
+        font-size: 30px;
+    }
+    .frm{
+        box-shadow:none;
+    }
+}
